@@ -2,7 +2,7 @@ import React from "react";
 
 const Credit = () => {
   return (
-    <p className="text-white absolute bottom-2 left-2 text-sm tracking-wider">
+    <p className="text-white absolute -bottom-11 sm:bottom-2 left-2 text-sm tracking-wider">
       Planet Textures are from
       <a
         className="underline ps-2"
