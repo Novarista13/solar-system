@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { Experience } from "./Experience/Experience";
 import Credit from "./Experience/components/Credit";
 import Loading from "./Experience/components/Loading";
+import ToggleAudio from "./Experience/components/ToggleAudio";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Experience />
         </Canvas>
         <Credit />
+        <ToggleAudio />
       </Suspense>
     </>
   );

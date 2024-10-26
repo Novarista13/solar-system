@@ -7,7 +7,7 @@ export default [
     distance: 7.5 + sunRadius,
     orbitSpeed: 1.6,
     rotationSpeed: 0.016,
-    texture: "./textures/mercury.jpg",
+    texture: "./textures/mercury.webp",
   },
   {
     name: "venus",
@@ -15,8 +15,8 @@ export default [
     distance: 15 + sunRadius,
     orbitSpeed: 1.17,
     rotationSpeed: 0.004,
-    texture: "./textures/venus/venus.jpg",
-    atmosphereTexture: "./textures/venus/venus_atmosphere.jpg",
+    texture: "./textures/venus/venus.webp",
+    atmosphereTexture: "./textures/venus/venus_atmosphere.webp",
   },
   {
     name: "earth",
@@ -24,12 +24,17 @@ export default [
     distance: 22.5 + sunRadius,
     orbitSpeed: 1,
     rotationSpeed: 1,
+    textures: {
+      day: "./textures/earth/day.webp",
+      night: "./textures/earth/night.webp",
+      specularClouds: "./textures/earth/specularClouds.webp",
+    },
     moon: {
       radius: 0.027,
       distance: 0.3,
       orbitSpeed: 0.5,
       rotationSpeed: 1,
-      texture: "./textures/moon.jpg",
+      texture: "./textures/moon.webp",
     },
   },
   {
@@ -38,7 +43,7 @@ export default [
     distance: 33 + sunRadius,
     orbitSpeed: 0.8,
     rotationSpeed: 1.03,
-    texture: "./textures/mars.jpg",
+    texture: "./textures/mars.webp",
   },
   {
     name: "jupiter",
@@ -46,7 +51,7 @@ export default [
     distance: 78 + sunRadius,
     orbitSpeed: 0.43,
     rotationSpeed: 2.4,
-    texture: "./textures/jupiter.jpg",
+    texture: "./textures/jupiter.webp",
   },
   {
     name: "saturn",
@@ -54,7 +59,7 @@ export default [
     distance: 142.5 + sunRadius,
     orbitSpeed: 0.32,
     rotationSpeed: 2.3,
-    texture: "./textures/saturn/saturn.jpg",
+    texture: "./textures/saturn/saturn.webp",
     hasRings: true,
     ringTexture: "./textures/saturn/saturn_ring.png",
   },
@@ -64,7 +69,7 @@ export default [
     distance: 288 + sunRadius,
     orbitSpeed: 0.23,
     rotationSpeed: 1.4,
-    texture: "./textures/uranus.jpg",
+    texture: "./textures/uranus.webp",
   },
   {
     name: "neptune",
@@ -72,6 +77,6 @@ export default [
     distance: 450 + sunRadius,
     orbitSpeed: 0.18,
     rotationSpeed: 1.5,
-    texture: "./textures/neptune.jpg",
+    texture: "./textures/neptune.webp",
   },
 ];

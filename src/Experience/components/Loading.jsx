@@ -4,7 +4,7 @@ const Loading = () => {
   return (
     <div
       className="relative w-screen h-screen flex flex-col gap-y-2 justify-center items-center"
-      style={{ backgroundImage: "url('./textures/milky_way.jpg')", backgroundSize: "cover" }}
+      style={{ backgroundImage: "url('./textures/milky_way.webp')", backgroundSize: "cover" }}
     >
       <h1 className="floating-effect text-2xl font-semibold text-white">Loading...</h1>
       <div

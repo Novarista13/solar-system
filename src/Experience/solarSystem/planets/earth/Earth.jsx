@@ -7,15 +7,15 @@ import earthFragmentShader from "../../../../shaders/earth/fragment.js";
 import Atmosphere from "./Atmosphere.jsx";
 import useSunDirectionCheck from "../../../../hooks/useSunDirectionCheck.js";
 import Moon from "./Moon.jsx";
-import { loadTexture } from "../Planet.jsx";
+import { useLoadTexture } from "../../SolarSystem.jsx";
 
 const Earth = ({ sunRef, earthRef, geometry, planet }) => {
-  const { radius, distance, moon } = planet;
+  const { radius, distance, textures, moon } = planet;
 
   // Load textures
-  const earthDayTexture = loadTexture("./textures/earth/day.jpg");
-  const earthNightTexture = loadTexture("./textures/earth/night.jpg");
-  const earthSpecularCloudsTexture = loadTexture("./textures/earth/specularClouds.jpg");
+  const earthDayTexture = useLoadTexture(textures.day);
+  const earthNightTexture = useLoadTexture(textures.night);
+  const earthSpecularCloudsTexture = useLoadTexture(textures.specularClouds);
 
   // Shader reference and sun direction update
   const shaderRef = useRef();

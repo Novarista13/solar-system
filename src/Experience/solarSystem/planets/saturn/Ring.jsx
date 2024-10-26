@@ -1,8 +1,8 @@
 import * as THREE from "three";
-import { loadTexture } from "../Planet";
+import { useLoadTexture } from "../../SolarSystem";
 
 const Ring = ({ radius, texture }) => {
-  const ringTexture = loadTexture(texture);
+  const ringTexture = useLoadTexture(texture);
 
   // Create ring geometry
   const geometry = new THREE.RingGeometry(radius * 1.5, radius * 2.3, 64);

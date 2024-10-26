@@ -1,4 +1,3 @@
-import { useTexture } from "@react-three/drei";
 import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
@@ -10,16 +9,7 @@ import Earth from "./earth/Earth.jsx";
 import planetVertexShader from "../../../shaders/earth/vertex.js";
 import planetFragmentShader from "../../../shaders/planets/fragment.js";
 import venusFragmentShader from "../../../shaders/venus/fragment.js";
-
-// Helper to load textures with common settings
-export const loadTexture = (texturePath) => {
-  const texture = useTexture(texturePath);
-  if (texture) {
-    texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = 8;
-  }
-  return texture;
-};
+import { useLoadTexture } from "../SolarSystem.jsx";
 
 export default function Planet({ planet, geometry, planetRef, sunRef }) {
   const {
@@ -36,8 +26,8 @@ export default function Planet({ planet, geometry, planetRef, sunRef }) {
 
   usePlanetAnimation(planetRef, distance, orbitSpeed, rotationSpeed);
 
-  const planetTexture = texture ? loadTexture(texture) : null;
-  const atmosphere = atmosphereTexture ? loadTexture(atmosphereTexture) : null;
+  const planetTexture = texture ? useLoadTexture(texture) : null;
+  const atmosphere = atmosphereTexture ? useLoadTexture(atmosphereTexture) : null;
 
   const shaderRef = useRef();
   useSunDirectionCheck(sunRef, planetRef, shaderRef);

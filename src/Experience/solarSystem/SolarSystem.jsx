@@ -6,8 +6,19 @@ import planets from "../../libs/planets";
 
 import Planet from "./planets/Planet";
 import Sun from "./Sun";
+import { useTexture } from "@react-three/drei";
 
 const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
+
+// Helper to load textures with common settings
+export const useLoadTexture = (texturePath) => {
+  const texture = useTexture(texturePath);
+  if (texture) {
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.anisotropy = 5;
+  }
+  return texture;
+};
 
 export default function SolarSystem() {
   const sunRef = useRef();
@@ -17,7 +28,7 @@ export default function SolarSystem() {
 
   return (
     <>
-      <Sun sunRef={sunRef} geometry={sphereGeometry} textureUrl="./textures/sun.jpg" />
+      <Sun sunRef={sunRef} geometry={sphereGeometry} textureUrl="./textures/sun.webp" />
       {planets.map((planet, index) => (
         <Planet
           key={index}

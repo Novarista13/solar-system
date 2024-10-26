@@ -10,7 +10,7 @@ import { Overlay } from "./components/Overlay";
 import planets from "../libs/planets";
 
 export const Experience = () => {
-  const texture = useTexture("./textures/milky_way.jpg");
+  const texture = useTexture("./textures/milky_way.webp");
   const scene = useThree((state) => state.scene);
 
   useLayoutEffect(() => {

@@ -3,17 +3,25 @@ import * as THREE from "three";
 import { useRef } from "react";
 import planets from "../libs/planets";
 import { useScroll } from "@react-three/drei";
-import { useResponsiveX } from "./useResponsive";
+import useResponsive from "./useResponsive";
 
-const useCameraAnimation = (planetRefs) => {
-  const scroll = useScroll(); // Get scroll information
-
+export default (planetRefs) => {
+  const scroll = useScroll();
   const yValue = useRef(0.1);
   const zValue = useRef(8);
   const cameraDistanceFactor = useRef(3);
 
-  const responsiveX = useResponsiveX();
-  responsiveX(yValue, zValue, cameraDistanceFactor);
+  const responsive = useResponsive();
+  responsive(yValue, zValue, cameraDistanceFactor);
+
+  const cameraPosition = useRef(new THREE.Vector3());
+  const cameraTarget = useRef(new THREE.Vector3());
+
+  const newCameraPosition = new THREE.Vector3();
+  const newCameraTarget = new THREE.Vector3();
+
+  const lerpSpeed = 0.1;
+  const lastTargetIndex = useRef(0);
 
   useFrame((state) => {
     const scrollValue = scroll.offset;
@@ -25,21 +33,25 @@ const useCameraAnimation = (planetRefs) => {
     if (targetPlanet) {
       const bodyPosition = targetPlanet.position;
 
-      const cameraPosition = new THREE.Vector3();
-      cameraPosition.copy(bodyPosition);
+      newCameraPosition.copy(bodyPosition);
+      newCameraPosition.x += planetRadius * cameraDistanceFactor.current;
+      newCameraPosition.z += planetRadius * cameraDistanceFactor.current * 1.25;
 
-      cameraPosition.x += planetRadius * cameraDistanceFactor.current;
-      cameraPosition.z += planetRadius * cameraDistanceFactor.current * 1.25;
+      newCameraTarget.copy(bodyPosition);
+      newCameraTarget.y += planetRadius * yValue.current;
+      newCameraTarget.z -= planetRadius * zValue.current;
 
-      const cameraTarget = new THREE.Vector3();
-      cameraTarget.copy(bodyPosition);
-      cameraTarget.y += planetRadius * yValue.current;
-      cameraTarget.z -= planetRadius * zValue.current;
+      if (targetIndex !== lastTargetIndex.current) {
+        cameraPosition.current.lerp(newCameraPosition, lerpSpeed);
+        cameraTarget.current.lerp(newCameraTarget, lerpSpeed);
+        lastTargetIndex.current = targetIndex;
+      } else {
+        cameraPosition.current.copy(newCameraPosition);
+        cameraTarget.current.copy(newCameraTarget);
+      }
 
-      state.camera.position.copy(cameraPosition);
-      state.camera.lookAt(cameraTarget);
+      state.camera.position.copy(cameraPosition.current);
+      state.camera.lookAt(cameraTarget.current);
     }
   });
 };
-
-export default useCameraAnimation;

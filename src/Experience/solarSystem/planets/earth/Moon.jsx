@@ -6,7 +6,7 @@ import usePlanetAnimation from "../../../../hooks/usePlanetAnimation";
 import planetVertexShader from "../../../../shaders/earth/vertex.js";
 import planetFragmentShader from "../../../../shaders/planets/fragment.js";
 import useMoonOcclusionCheck from "../../../../hooks/useMoonOcclusionCheck.js";
-import { loadTexture } from "../Planet.jsx";
+import { useLoadTexture } from "../../SolarSystem.jsx";
 
 export default function Moon({
   geometry,
@@ -24,7 +24,7 @@ export default function Moon({
   usePlanetAnimation(moonRef, distance, orbitSpeed, rotationSpeed);
 
   // textures
-  const moonTexture = loadTexture(texture);
+  const moonTexture = useLoadTexture(texture);
 
   // update sun direction
   const shaderRef = useRef();
