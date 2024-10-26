@@ -24,7 +24,7 @@ export const Experience = () => {
       {window.location.hash === "#perf" && <Perf position="top-left" />}
 
       {/* <OrbitControls /> */}
-      <ScrollControls horizontal pages={planets.length} damping={0.25}>
+      <ScrollControls horizontal pages={planets.length} damping={0.15}>
         <SolarSystem />
         <Overlay />
       </ScrollControls>

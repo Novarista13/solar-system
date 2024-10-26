@@ -51,7 +51,6 @@ export const Overlay = () => {
           opacity = 1 - (distance - 0.3) / 0.4;
         }
 
-        // Use setTimeout to delay opacity setting, allowing CSS to handle both directions
         setTimeout(() => {
           if (parseFloat(targetSection.style.opacity) !== opacity) {
             targetSection.style.opacity = opacity;

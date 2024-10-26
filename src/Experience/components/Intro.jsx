@@ -7,7 +7,7 @@ const Intro = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollValue = scroll.offset;
+      const scrollValue = Math.round(scroll.offset);
 
       if (textRef.current) {
         if (scrollValue > 0) {
